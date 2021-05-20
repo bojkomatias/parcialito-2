@@ -15,11 +15,11 @@
     <% @vaccines.each do |vaccine| %>
       <tr>
         <td><%= vaccine.name %></td>
-         <%# total = 0%>
-          <%# vaccine.users.each do |v|%>
-              <%# total += 1%>
-          <%# end %>
-          <td><%#= link_to total, appointments_path(:id => id)%></td>
+         <% total = 0%>
+          <% vaccine.appointments.each do |v|%>
+              <% total += 1%>
+          <% end %>
+          <td><%= link_to total, users_path(:vaccine_id => vaccine.id)%></td>
         <td><%= link_to 'Show', vaccine %></td>
         <td><%= link_to 'Edit', edit_vaccine_path(vaccine) %></td>
         <td><%= link_to 'Destroy', vaccine, method: :delete, data: { confirm: 'Are you sure?' } %></td>

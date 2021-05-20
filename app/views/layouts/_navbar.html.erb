@@ -23,10 +23,11 @@
       </ul>
     
       <div class="d-flex mx-2">
-            <%= user_signed_in? %>
+            <%= user_signed_in? ? 'Estas Logueado!' : null %>
             <% if user_signed_in? %>
+            <div class='fs-4 '>
               <%= current_user.first_name%>
-              <button type="button" class="btn btn-warning" href="users/sign_out">Cerrar Sesion</button>
+              </div>
             <%else%>
                 <button type="button" class="btn btn-warning" href="users/sign_out"><%= link_to "Log in", new_session_path(resource_name) %><br /></button>
             <% end%> 

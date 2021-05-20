@@ -3,11 +3,9 @@
 one:
   user: one
   child: one
-  date: 2021-05-19
-  dose: 1
+  vaccine: one
 
 two:
   user: two
   child: two
-  date: 2021-05-19
-  dose: 1
+  vaccine: two

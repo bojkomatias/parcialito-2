@@ -7,8 +7,7 @@
     <tr>
       <th>User</th>
       <th>Child</th>
-      <th>Date</th>
-      <th>Dose</th>
+      <th>Vaccine</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,8 +17,7 @@
       <tr>
         <td><%= appointment.user_id %></td>
         <td><%= appointment.child_id %></td>
-        <td><%= appointment.date %></td>
-        <td><%= appointment.dose %></td>
+        <td><%= appointment.vaccine_id %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
         <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

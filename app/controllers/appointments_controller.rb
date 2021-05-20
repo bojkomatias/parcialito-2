@@ -5,6 +5,8 @@ class AppointmentsController < ApplicationController
   def index
     @appointments = Appointment.all
     @appointments = @appointments.where(:child_id => params[:child_id]) if params[:child_id]
+    @appointments = @appointments.where(:user_id => params[:user_id]) if params[:user_id]
+    
   end
 
   # GET /appointments/1 or /appointments/1.json
@@ -65,6 +67,6 @@ class AppointmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def appointment_params
-      params.require(:appointment).permit(:user_id, :child_id, :date, :dose)
+      params.require(:appointment).permit(:user_id, :child_id, :vaccine_id)
     end
 end

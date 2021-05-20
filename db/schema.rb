@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_222536) do
+ActiveRecord::Schema.define(version: 2021_05_20_002706) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "child_id", null: false
-    t.date "date"
-    t.integer "dose"
+    t.integer "vaccine_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "dose"
     t.index ["child_id"], name: "index_appointments_on_child_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
+    t.index ["vaccine_id"], name: "index_appointments_on_vaccine_id"
   end
 
   create_table "children", force: :cascade do |t|
@@ -55,4 +56,5 @@ ActiveRecord::Schema.define(version: 2021_05_19_222536) do
 
   add_foreign_key "appointments", "children"
   add_foreign_key "appointments", "users"
+  add_foreign_key "appointments", "vaccines"
 end

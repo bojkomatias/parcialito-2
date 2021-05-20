@@ -15,9 +15,8 @@ class AppointmentsTest < ApplicationSystemTestCase
     click_on "New Appointment"
 
     fill_in "Child", with: @appointment.child_id
-    fill_in "Date", with: @appointment.date
-    fill_in "Dose", with: @appointment.dose
     fill_in "User", with: @appointment.user_id
+    fill_in "Vaccine", with: @appointment.vaccine_id
     click_on "Create Appointment"
 
     assert_text "Appointment was successfully created"
@@ -29,9 +28,8 @@ class AppointmentsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Child", with: @appointment.child_id
-    fill_in "Date", with: @appointment.date
-    fill_in "Dose", with: @appointment.dose
     fill_in "User", with: @appointment.user_id
+    fill_in "Vaccine", with: @appointment.vaccine_id
     click_on "Update Appointment"
 
     assert_text "Appointment was successfully updated"
