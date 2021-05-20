@@ -2,26 +2,33 @@
 
 <nav class="navbar navbar-expand-xl navbar-light" style="background-color: #841B2D;">
   <div class="container-fluid">
-    <a class="navbar-brand fs-5 fst-italic" href="#">Parcialito 2</a>
+    <a class="navbar-brand fs-5 fst-italic" href="/">Parcialito 2</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLight" aria-controls="navbarLight" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse show" id="navbarLight">
       <ul class="navbar-nav me-auto mb-2 mb-xl-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/users">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/children">Children</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/vaccines">Vaccines</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/appointments">Appointments</a>
         </li>
       </ul>
-      <form class="d-flex mx-2">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-dark" type="submit">Search</button>
-      </form>
+    
       <div class="d-flex mx-2">
+            <%= user_signed_in? %>
             <% if user_signed_in? %>
-            <%=%>
-            <button type="button" class="btn btn-warning">Cerrar Sesion</button>
+              <%= current_user.first_name%>
+              <button type="button" class="btn btn-warning" href="users/sign_out">Cerrar Sesion</button>
             <%else%>
-              <button type="button" class="btn btn-outline-secondary fs-5 fst-italic " href="users/sign_in">Iniciar Sesion</button> 
+                <button type="button" class="btn btn-warning" href="users/sign_out"><%= link_to "Log in", new_session_path(resource_name) %><br /></button>
             <% end%> 
           </div>
     </div>

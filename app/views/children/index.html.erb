@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Children</h1>
+ <form class="d-flex mx-2" method="GET" action="/children">
+        <input class="form-control me-2" placeholder="Search" aria-label="Search" type="text" name="filter" >
+        <button class="btn btn-outline-dark" type="submit">Search</button>
+      </form>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= link_to "First Name", children_path(:sort => true, :by => "first_name", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Last Name", children_path(:sort => true, :by => "last_name", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Birth", children_path(:sort => true, :by => "birth", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Age", children_path(:sort => true, :by => "birth", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Sex", children_path(:sort => true, :by => "sex", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Document", children_path(:sort => true, :by => "document", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th><%= link_to "Cantidad de Vacunas", children_path(:sort => true, :by => "document", :order => (params[:order] == "asc" ? "desc" : "asc")) %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @children.each do |child| %>
+      <tr>
+        <td><%= child.first_name %></td>
+        <td><%= child.last_name %></td>
+        <td><%= child.birth %></td>
+        <td><%= child.age(child.birth)  %></td>
+        <td><%= child.sex %></td>
+        <td><%= child.document %></td>
+        <% total = 0%>
+          <% child.appointments.each do |a|%>
+          <% if a.dose == 2 %>
+              <% total += 1%>
+          <%end%>
+          <%end %>
+
+          <td><%= link_to total, appointments_path(:child_id => child.id)%></td>
+        
+        <td><%= link_to 'Show', child %></td>
+        <td><%= link_to 'Edit', edit_child_path(child) %></td>
+        <td><%= link_to 'Destroy', child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @children %>
+
+<br>
+
+<%= link_to 'New Child', new_child_path %>
